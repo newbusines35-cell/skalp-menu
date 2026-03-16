@@ -1,0 +1,123 @@
+<!DOCTYPE html>  
+<html lang="ka">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  
+<title>Skalp Menu</title>  
+  
+<style>  
+  
+body{  
+font-family: Arial;  
+margin:0;  
+background:#fafafa;  
+}  
+  
+.header{  
+background:#111;  
+color:white;  
+text-align:center;  
+padding:25px;  
+font-size:28px;  
+font-weight:bold;  
+}  
+  
+.category{  
+margin-top:20px;  
+padding-left:15px;  
+font-size:22px;  
+font-weight:bold;  
+}  
+  
+.menu{  
+padding:10px;  
+}  
+  
+.item{  
+background:white;  
+padding:15px;  
+margin:10px;  
+border-radius:12px;  
+display:flex;  
+justify-content:space-between;  
+box-shadow:0 2px 8px rgba(0,0,0,0.15);  
+}  
+  
+.price{  
+color:#e63946;  
+font-weight:bold;  
+}  
+  
+.footer{  
+text-align:center;  
+padding:20px;  
+color:#888;  
+}  
+  
+</style>  
+</head>  
+  
+<body>  
+  
+<div class="header">  
+🍔 Skalp Menu  
+</div>  
+  
+<div class="category">  
+🍗 ბოქსები  
+</div>  
+  
+<div class="menu">  
+  
+<div class="item">  
+<span>Skalp ბოქსი</span>  
+<span class="price">15₾</span>  
+</div>  
+  
+<div class="item">  
+<span>Skalp პარმეზან ბოქსი</span>  
+<span class="price">20₾</span>  
+</div>  
+  
+<div class="item">  
+<span>Skalp ქნიქენ ჩიქენ ბოქსი</span>  
+<span class="price">22₾</span>  
+</div>  
+  
+<div class="item">  
+<span>Skalp სპაისი ბოქსი</span>  
+<span class="price">18₾</span>  
+</div>  
+  
+</div>  
+  
+<div class="category">  
+🌮 სხვა  
+</div>  
+  
+<div class="menu">  
+  
+<div class="item">  
+<span>მექსიკური ტაკო</span>  
+<span class="price">5₾</span>  
+</div>  
+  
+<div class="item">  
+<span>კარტოფილი</span>  
+<span class="price">5₾</span>  
+</div>  
+  
+<div class="item">  
+<span>ქათმის ბურგერი</span>  
+<span class="price">10₾</span>  
+</div>  
+  
+</div>  
+  
+<div class="footer">  
+Scan QR • View Menu  
+</div>  
+  
+</body>  
+</html>  
