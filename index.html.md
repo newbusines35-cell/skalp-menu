@@ -1,5 +1,4 @@
-<index.html>  
-<!DOCTYPE html>  
+<index.html>   
 <html lang="ka">  
 <head>  
   
