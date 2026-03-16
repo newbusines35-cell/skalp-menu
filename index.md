@@ -138,7 +138,7 @@ Skalp Burger
 </div>
 
 <div class="item">
-<img src="https://www.istockphoto.com/photo/french-fries-with-ketchup-on-dark-background-gm1388228914-445936129">
+<imgsrc="https://www.istockphoto.com/photo/french-fries-on-white-background-gm964858632-263367253">
 <div class="info">
 <span>კარტოფილი ფრი</span>
 <span class="price">5₾</span>
