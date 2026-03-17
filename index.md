@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SKALP Menu</title>
+<title>SKALP Menu</title>logo.png
 
 <style>
 
@@ -191,7 +191,7 @@ color:#aaa;
 </div>
 
 
-<a class="order-btn" href="https://wa.me/995555123456">
+<a class="order-btn" href="https://wa.me/995574008020">
 🛒 შეუკვეთე WhatsApp-ით
 </a>
 
