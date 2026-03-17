@@ -5,40 +5,83 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Skalp Burger</title>
+<title>SKALP Burger</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#fafafa;
+background:#050505;
+color:white;
 }
 
 .header{
-background:#111;
-color:white;
 text-align:center;
 padding:30px;
-font-size:34px;
-font-weight:bold;
+}
+
+.logo{
+width:140px;
+animation: neon 1.5s infinite alternate;
+}
+
+@keyframes neon{
+0%{filter:drop-shadow(0 0 5px #ff00cc);}
+100%{filter:drop-shadow(0 0 25px #ff00cc);}
+}
+
+.title{
+font-size:40px;
+color:#ff00cc;
+text-shadow:0 0 15px #ff00cc;
+}
+
+.slider{
+display:flex;
+overflow-x:auto;
+gap:20px;
+padding:20px;
+}
+
+.slide{
+min-width:240px;
+background:#111;
+border-radius:20px;
+transform:perspective(800px) rotateY(-10deg);
+transition:0.3s;
+box-shadow:0 0 20px #ff00cc;
+}
+
+.slide:hover{
+transform:scale(1.05) rotateY(0deg);
+}
+
+.slide img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:20px 20px 0 0;
+}
+
+.slide p{
+padding:10px;
 }
 
 .menu{
-padding:15px;
+padding:20px;
 }
 
 .item{
-background:white;
+background:#111;
 border-radius:15px;
 overflow:hidden;
 margin-bottom:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
 .item img{
 width:100%;
-height:220px;
+height:200px;
 object-fit:cover;
 }
 
@@ -46,28 +89,55 @@ object-fit:cover;
 display:flex;
 justify-content:space-between;
 padding:15px;
-font-size:20px;
+font-size:18px;
 }
 
 .price{
-color:#ff3d00;
-font-weight:bold;
+color:#00ff9c;
 }
 
-.order{
-background:#ff3d00;
+button{
+background:#ff0066;
+border:none;
 color:white;
-text-align:center;
-padding:18px;
-font-size:20px;
-margin:20px;
-border-radius:10px;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
 }
 
-.footer{
-text-align:center;
+.cart{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#ff0066;
+padding:15px;
+border-radius:50px;
+box-shadow:0 0 15px #ff0066;
+}
+
+.admin{
+background:#111;
 padding:20px;
-color:#777;
+margin:20px;
+border-radius:15px;
+}
+
+input{
+padding:10px;
+margin:5px;
+border-radius:5px;
+border:none;
+}
+
+.map{
+padding:20px;
+}
+
+iframe{
+width:100%;
+height:250px;
+border-radius:15px;
+border:none;
 }
 
 </style>
@@ -77,53 +147,153 @@ color:#777;
 <body>
 
 <div class="header">
-🍔 Skalp Burger Menu
+
+<img src="logo.png" class="logo">
+
+<div class="title">SKALP BURGER</div>
+
 </div>
 
-<div class="menu">
 
-<div class="item">
+<!-- 3D SLIDER -->
+
+<div class="slider">
+
+<div class="slide">
 <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
-<div class="info">
-<span>ქათმის ბურგერი</span>
-<span class="price">10₾</span>
-</div>
+<p>ქათმის ბურგერი</p>
 </div>
 
-<div class="item">
+<div class="slide">
 <img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
-<div class="info">
-<span>Skalp ბოქსი
-</span>
-<span class="price">15₾</span>
-</div>
+<p>SKALP ბოქსი</p>
 </div>
 
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1606755962773-d324e2d53a4c">
+<p>Chicken Box</p>
+</div>
+
+</div>
+
+
+<!-- MENU -->
+
+<div class="menu" id="menu"></div>
+
+
+<!-- CART -->
+
+<div class="cart" onclick="showCart()">
+🛒 Cart
+</div>
+
+
+<!-- ADMIN PANEL -->
+
+<div class="admin">
+
+<h3>მენიუს მართვა</h3>
+
+<input id="name" placeholder="პროდუქტი">
+<input id="price" placeholder="ფასი">
+
+<button onclick="addItem()">დამატება</button>
+
+</div>
+
+
+<!-- MAP -->
+
+<div class="map">
+
+<iframe
+src="https://maps.google.com/maps?q=tbilisi&t=&z=15&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+</div>
+
+
+<script>
+
+let menu = JSON.parse(localStorage.getItem("menu")) || [
+
+{name:"ქათმის ბურგერი",price:"10₾",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd"},
+{name:"SKALP ბოქსი",price:"15₾",img:"https://images.unsplash.com/photo-1550547660-d9450f859349"},
+{name:"კარტოფილი ფრი",price:"5₾",img:"https://images.unsplash.com/photo-1585238342024-78d387f4a707"}
+
+]
+
+let cart=[]
+
+function render(){
+
+let html=""
+
+menu.forEach((i,index)=>{
+
+html+=`
 <div class="item">
-<img src="https://images.unsplash.com/photo-1576107232684-1279f390859f">
+
+<img src="${i.img}">
+
 <div class="info">
-<span>კარტოფილი ფრი</span>
-<span class="price">5₾</span>
-</div>
-</div>
 
-<div class="item">
-<img src="https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c">
-<div class="info">
-<span>მექსიკური ტაკო</span>
-<span class="price">5₾</span>
-</div>
-</div>
+<span>${i.name}</span>
+
+<span class="price">${i.price}</span>
+
+<button onclick="addCart(${index})">Add</button>
 
 </div>
 
-<div class="order">
-📲 შეკვეთა: 574-008-020
 </div>
+`
 
-<div class="footer">
-📱 Scan QR • Skalp Burger
-</div>
+})
+
+document.getElementById("menu").innerHTML=html
+
+}
+
+function addCart(i){
+
+cart.push(menu[i])
+
+alert("დაემატა კალათაში")
+
+}
+
+function showCart(){
+
+let txt="თქვენი შეკვეთა:\n"
+
+cart.forEach(i=>{
+
+txt+=i.name+" "+i.price+"\n"
+
+})
+
+alert(txt)
+
+}
+
+function addItem(){
+
+let name=document.getElementById("name").value
+let price=document.getElementById("price").value
+
+menu.push({name,price,img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd"})
+
+localStorage.setItem("menu",JSON.stringify(menu))
+
+render()
+
+}
+
+render()
+
+</script>
 
 </body>
 </html>
