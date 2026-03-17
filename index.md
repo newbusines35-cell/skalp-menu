@@ -1,152 +1,40 @@
 <index.html>
-<html lang="ka">
+<html>
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>SKALP Burger</title>
-
+<title>SKALP Admin</title>
 <style>
 
 body{
-margin:0;
 font-family:Arial;
-background:#000;
-color:white;
-}
-
-.header{
-text-align:center;
-padding:20px;
-}
-
-.logo{
-width:130px;
-filter:drop-shadow(0 0 10px #ff00cc);
-}
-
-.category{
-padding:15px;
-font-size:22px;
-color:#00ff9c;
-}
-
-.menu{
-padding-bottom:100px;
-}
-
-.card{
 background:#111;
-border-radius:20px;
-margin:15px;
-overflow:hidden;
-box-shadow:0 0 10px #ff00cc44;
-}
-
-.card img{
-width:100%;
-height:200px;
-object-fit:cover;
-}
-
-.info{
-display:flex;
-justify-content:space-between;
-padding:15px;
-font-size:18px;
-}
-
-.add{
-background:#ff0066;
-border:none;
 color:white;
-padding:10px 15px;
-border-radius:10px;
+padding:30px;
 }
 
-.bottom{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#111;
-display:flex;
-justify-content:space-around;
-padding:15px;
-}
-
-.bottom button{
-background:none;
-border:none;
-color:white;
-font-size:18px;
-}
-
-.cart{
-display:none;
-position:fixed;
-inset:0;
-background:#000;
-padding:20px;
-}
-
-.order{
-background:#00ff9c;
-border:none;
-padding:15px;
-width:100%;
-font-size:18px;
-border-radius:10px;
+input,button{
+padding:10px;
+margin:5px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="header">
-<img src="logo.png" class="logo">
-<h2>SKALP MENU</h2>
-</div>
+<h2>SKALP Admin Panel</h2>
 
-<div class="menu" id="menu"></div>
+<input id="name" placeholder="პროდუქტი">
+<input id="price" placeholder="ფასი">
+<input id="img" placeholder="სურათის ლინკი">
 
-<div class="bottom">
+<button onclick="add()">დამატება</button>
 
-<button onclick="showMenu()">🍔 Menu</button>
-
-<button onclick="openCart()">🛒 Cart</button>
-
-<button onclick="location.href='https://maps.app.goo.gl/M6yWTgJy975hESnt6'">
-📍 Location
-</button>
-
-</div>
-
-<div class="cart" id="cart">
-
-<h2>თქვენი შეკვეთა</h2>
-
-<div id="cartItems"></div>
-
-<button class="order" onclick="sendOrder()">
-შეკვეთის გაგზავნა
-</button>
-
-</div>
+<div id="list"></div>
 
 <script>
 
-const menu=[
-{name:"SKALP ბოქსი",price:15,img:"https://images.unsplash.com/photo-1550547660-d9450f859349"},
-{name:"პარმეზან ბოქსი",price:20,img:"https://images.unsplash.com/photo-1606755962773-d324e2d53a4c"},
-{name:"ქათმის ბურგერი",price:10,img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd"},
-{name:"კარტოფილი ფრი",price:5,img:"https://images.unsplash.com/photo-1585238342024-78d387f4a707"}
-]
-
-let cart=[]
+let menu=JSON.parse(localStorage.getItem("menu"))||[]
 
 function render(){
 
@@ -155,58 +43,38 @@ let html=""
 menu.forEach((i,index)=>{
 
 html+=`
-<div class="card">
-
-<img src="${i.img}">
-
-<div class="info">
-
-<span>${i.name} - ${i.price}₾</span>
-
-<button class="add" onclick="add(${index})">+</button>
-
-</div>
-
+<div>
+${i.name} - ${i.price} ₾
+<button onclick="del(${index})">წაშლა</button>
 </div>
 `
 
 })
 
-menu.innerHTML=html
+document.getElementById("list").innerHTML=html
 
 }
 
-function add(i){
+function add(){
 
-cart.push(menu[i])
-
-alert("დაემატა")
-
-}
-
-function openCart(){
-
-let html=""
-
-cart.forEach(i=>{
-html+=`<div>${i.name} - ${i.price}₾</div>`
+menu.push({
+name:name.value,
+price:price.value,
+img:img.value
 })
 
-cartItems.innerHTML=html
-
-document.getElementById("cart").style.display="block"
+localStorage.setItem("menu",JSON.stringify(menu))
+render()
 
 }
 
-function sendOrder(){
+function del(i){
 
-let text="SKALP ORDER%0A"
+menu.splice(i,1)
 
-cart.forEach(i=>{
-text+=i.name+" "+i.price+"₾%0A"
-})
+localStorage.setItem("menu",JSON.stringify(menu))
 
-window.open("https://wa.me/995555123456?text="+text)
+render()
 
 }
 
