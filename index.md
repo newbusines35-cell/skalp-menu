@@ -1,65 +1,45 @@
 <index.html>
+<!DOCTYPE html>
 <html lang="ka">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Skalp Menu</title>
+<title>Skalp Burger</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#f3f3f3;
+background:#fafafa;
 }
 
 .header{
-background:url("https://images.unsplash.com/photo-1550547660-d9450f859349");
-background-size:cover;
-background-position:center;
-height:220px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:36px;
-font-weight:bold;
-text-shadow:0 0 10px black;
-}
-
-.categories{
-display:flex;
-overflow:auto;
-padding:10px;
-background:white;
-}
-
-.cat{
 background:#111;
 color:white;
-padding:8px 15px;
-border-radius:20px;
-margin-right:10px;
-font-size:14px;
+text-align:center;
+padding:30px;
+font-size:34px;
+font-weight:bold;
 }
 
 .menu{
-padding:10px;
+padding:15px;
 }
 
 .item{
 background:white;
-margin:15px 0;
 border-radius:15px;
 overflow:hidden;
-box-shadow:0 4px 10px rgba(0,0,0,0.15);
+margin-bottom:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
 .item img{
 width:100%;
-height:200px;
+height:220px;
 object-fit:cover;
 }
 
@@ -67,21 +47,20 @@ object-fit:cover;
 display:flex;
 justify-content:space-between;
 padding:15px;
-font-size:18px;
+font-size:20px;
 }
 
 .price{
-color:#e63946;
+color:#ff3d00;
 font-weight:bold;
-font-size:20px;
 }
 
 .order{
 background:#ff3d00;
 color:white;
 text-align:center;
-padding:15px;
-font-size:18px;
+padding:18px;
+font-size:20px;
 margin:20px;
 border-radius:10px;
 }
@@ -89,7 +68,7 @@ border-radius:10px;
 .footer{
 text-align:center;
 padding:20px;
-color:#888;
+color:#777;
 }
 
 </style>
@@ -99,16 +78,7 @@ color:#888;
 <body>
 
 <div class="header">
-Skalp Burger
-</div>
-
-<div class="categories">
-
-<div class="cat">🍔 ბურგერები</div>
-<div class="cat">🍗 ბოქსები</div>
-<div class="cat">🌮 ტაკო</div>
-<div class="cat">🍟 კარტოფილი</div>
-
+🍔 Skalp Burger Menu
 </div>
 
 <div class="menu">
@@ -122,10 +92,18 @@ Skalp Burger
 </div>
 
 <div class="item">
-<img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
 <div class="info">
-<span>Skalp ბოქსი</span>
+<span>Skalp ბოქსი (ბურგერი + ფრი)</span>
 <span class="price">15₾</span>
+</div>
+</div>
+
+<div class="item">
+<img src="https://images.unsplash.com/photo-1576107232684-1279f390859f">
+<div class="info">
+<span>კარტოფილი ფრი</span>
+<span class="price">5₾</span>
 </div>
 </div>
 
@@ -137,22 +115,14 @@ Skalp Burger
 </div>
 </div>
 
-<div class="item">
-<imgsrc="https://istockphoto.com/photo/french-fries-on-white-background-gm964858632-263367253">
-<div class="info">
-<span>კარტოფილი ფრი</span>
-<span class="price">5₾</span>
-</div>
-</div>
-
 </div>
 
 <div class="order">
-📲 შეკვეთა: 574 008-020
+📲 შეკვეთა: 574-008-020
 </div>
 
 <div class="footer">
-📱 Scan QR • Skalp Menu
+📱 Scan QR • Skalp Burger
 </div>
 
 </body>
