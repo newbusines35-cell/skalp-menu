@@ -1,5 +1,4 @@
 <index.html>
-<!DOCTYPE html>
 <html lang="ka">
 <head>
 
@@ -94,7 +93,8 @@ color:#777;
 <div class="item">
 <img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
 <div class="info">
-<span>Skalp ბოქსი (ბურგერი + ფრი)</span>
+<span>Skalp ბოქსი
+</span>
 <span class="price">15₾</span>
 </div>
 </div>
