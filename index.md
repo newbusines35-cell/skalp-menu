@@ -181,7 +181,7 @@ color:#aaa;
 <div class="category">🍗 ფრთები</div>
 
 <div class="item">
-<img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7">
+<img src="https://unsplash.com/photos/a-basket-filled-with-fried-food-on-top-of-a-wooden-table-ezYofSrBBdo">
 <div class="info">
 <span>ცხელი ქათმის ფრთები (1000გ)</span>
 <span class="price">7 ₾</span>
